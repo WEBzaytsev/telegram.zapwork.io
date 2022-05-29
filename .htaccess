@@ -1,0 +1,21 @@
+DirectoryIndex index.php
+RewriteEngine On
+
+# Основной домен
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule ^(.*)$ httpы://%1/$1 [R=301,L]
+
+# Главная
+RewriteRule ^index.html$ index.php [L]
+
+# Скачать превью
+RewriteRule ^download(/?)+$ index.php?menu=download [L]
+
+# Авторизация администратора
+RewriteRule ^admin(/?)+$ index.php?menu=admin [L]
+
+# Аккаунт
+RewriteRule ^account/add_preset(/?)+$ index.php?menu=account&sel=add_preset [L]
+RewriteRule ^account/edit_preset(/?)+$ index.php?menu=account&sel=edit_preset [L]
+RewriteRule ^account/exit(/?)+$ index.php?menu=account&sel=exit [L]
+RewriteRule ^account(/?)+$ index.php?menu=account [L]
